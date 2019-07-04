@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package shipping;
+
+message Asset {
+    string assetId = 1;
+    string description = 2;
+}
+
+message Business {
+    string name = 1;
+    string address = 2;
+    string phone = 3;
+    string description = 4;
+}
+
+message RequestShipping {
+    Asset anAsset = 1;
+    Business aBusiness =2;
+}
+
+message Response {
+    string requestId = 1;
+}
+
+service ProducerEndpoint {
+    rpc RequestShipping (RequestShipping) returns (Response);
+}

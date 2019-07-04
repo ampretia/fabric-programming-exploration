@@ -1,0 +1,72 @@
+{
+    "name": "typescript",
+    "version": "0.0.3",
+    "description": "",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "lint": "tslint -c tslint.json 'src/**/*.ts'",
+        "pretest": "npm run lint",
+        "test": "nyc mocha -r ts-node/register src/**/*.spec.ts",
+        "start": "node dist/application.js",
+        "build": "tsc",
+        "build:watch": "tsc -w",
+        "prepublishOnly": "npm run build"
+    },
+    "engineStrict": true,
+    "author": "",
+    "license": "",
+    "dependencies": {
+        "@types/js-yaml": "^3.11.2",
+        "fabric-ca-client": "unstable-1.4",
+        "fabric-client": "unstable-1.4",
+        "fabric-contract-api": "^1.4.2-snapshot.28",
+        "fabric-data": "file:fabric-data-0.0.1.tgz",
+        "fabric-network": "unstable-1.4",
+        "fabric-shim": "^1.4.2-snapshot.29",
+        "js-yaml": "^3.12.0",
+        "jsome": "^2.5.0",
+        "readline-sync": "^1.4.9",
+        "shipping-adt": "file:shipping-adt-0.0.1.tgz",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.1.4",
+        "@types/mocha": "^5.2.3",
+        "@types/node": "^10.3.6",
+        "@types/sinon": "^7.0.11",
+        "@types/sinon-chai": "^3.2.0",
+        "chai": "^4.1.2",
+        "mocha": "^5.2.0",
+        "nyc": "^12.0.2",
+        "sinon": "^6.0.0",
+        "sinon-chai": "^3.2.0",
+        "ts-node": "^7.0.0",
+        "tslint": "^5.10.0",
+        "typescript": "^2.9.2"
+    },
+    "nyc": {
+        "extension": [
+            ".ts",
+            ".tsx"
+        ],
+        "exclude": [
+            "coverage/**",
+            "dist/**"
+        ],
+        "reporter": [
+            "text-summary",
+            "html"
+        ],
+        "all": true,
+        "check-coverage": true,
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+    }
+}

@@ -1,0 +1,19 @@
+[
+    "requestShipment",
+    {
+        "type": "Asset",
+        "keyParts": [
+            "assetId"
+        ],
+        "assetId": "37d711ad-a412-49b4-a408-734726bfd84d",
+        "description": "Very valuable"
+    },
+    {
+        "type": "Business",
+        "keyParts": [
+            "name"
+        ],
+        "name": "Acme inc",
+        "address": "32 Bedrook Street"
+    }
+]

@@ -1,0 +1,41 @@
+namespace org.fabric.example.shipping
+
+asset Goods identified by assetId {
+  o String assetId
+  o String description
+}
+
+asset Business identified by name {
+  o String name
+  o String address
+  o String phone
+  o String description
+}
+
+asset Shipment identified by shipmentId {
+  o String shipmentId
+  o Goods goodsAsset
+  o Business business 
+}
+
+
+@contract(ProducerEndpoint)
+@returns(Shipment)
+transaction queryShipment identified by owningContract {
+  o String owningContract
+  o Goods goodsAsset
+  o Business consumer
+}
+
+
+@contract(ProducerEndpoint)
+@returns(String)
+transaction requestShipment identified by owningContract {
+  o String owningContract
+  o Goods goodsAsset
+  o Business consumer
+}
+
+
+
+

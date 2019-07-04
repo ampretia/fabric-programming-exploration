@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "queryShipment",
+    "description": "A transaction named queryShipment",
+    "type": "object",
+    "properties": {
+        "$class": {
+            "type": "string",
+            "default": "org.fabric.example.shipping.queryShipment",
+            "description": "The class identifier for this type"
+        },
+        "owningContract": {
+            "type": "string",
+            "description": "The instance identifier for this type"
+        },
+        "goodsAsset": {
+            "type": "object",
+            "properties": {
+                "$class": {
+                    "type": "string",
+                    "default": "org.fabric.example.shipping.Goods",
+                    "description": "The class identifier for this type"
+                },
+                "assetId": {
+                    "type": "string",
+                    "description": "The instance identifier for this type"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetId",
+                "description"
+            ],
+            "description": "An instance of org.fabric.example.shipping.Goods"
+        },
+        "consumer": {
+            "type": "object",
+            "properties": {
+                "$class": {
+                    "type": "string",
+                    "default": "org.fabric.example.shipping.Business",
+                    "description": "The class identifier for this type"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The instance identifier for this type"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "address",
+                "phone",
+                "description"
+            ],
+            "description": "An instance of org.fabric.example.shipping.Business"
+        },
+        "timestamp": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": [
+        "$class",
+        "owningContract",
+        "goodsAsset",
+        "consumer",
+        "timestamp"
+    ]
+}
