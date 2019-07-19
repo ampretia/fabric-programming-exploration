@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    compile group: ''
     compile group: 'org.hyperledger.fabric-chaincode-java', name: 'fabric-chaincode-shim', version: '2.0.0-SNAPSHOT'
     compile group: 'org.json', name: 'json', version: '20180813'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'

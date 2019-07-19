@@ -1,0 +1,29 @@
+syntax = "proto3";
+package greeting;
+
+import "general.proto";
+
+option java_multiple_files = true;
+option java_package = "greeting.grpc";
+option java_outer_classname = "GreetingProto";
+
+message EMPTY {}
+
+message Greeting {
+    string text = 1         [ contract.typeInfo = 'a-z' ]; // schema = { "pattern", "^[a-zA-Z\\s]{0,15}$" }
+    int32 friendlyness = 2;  // schema = { "minimum", "1", "maximum", "5" }
+    message TextFacts {
+        int32 textLength = 1;
+        int32 wordCount = 2;
+    }
+}
+
+message Text {
+    string text = 1;
+}
+
+service GreetingContract {
+    rpc setGreetingText (Text) returns (Greeting);
+    rpc getGreetingText (EMPTY) returns (Text);
+}
+

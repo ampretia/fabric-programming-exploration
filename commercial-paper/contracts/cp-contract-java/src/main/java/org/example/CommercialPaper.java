@@ -6,7 +6,7 @@ package org.example;
 
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
-import org.ledgerapi.State;
+import fabric.data.ledgerapi.State;
 import org.json.JSONPropertyIgnore;
 
 @DataType()

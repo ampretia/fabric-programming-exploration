@@ -108,9 +108,11 @@ public class CommercialPaperContract implements ContractInterface {
      * @param {String} redeemingOwner redeeming owner of paper
      * @param {String} redeemDateTime time paper was redeemed
     */
-    public CommercialPaper redeem(CommercialPaperContext ctx, String issuer,String paperNumber, String redeemingOwner, String redeemDateTime) {
+    public CommercialPaper redeem(CommercialPaperContext ctx, String issuer,String paperNumber, @TransientData() String redeemingOwner, String redeemDateTime) {
         
         CommercialPaper paper = ctx.getPaperList().get(paperNumber);
+
+        ctx.getClientIdenity().assertAttributeValue("AUDITOR","true");
 
         // Check paper is not REDEEMED
         if (paper.isRedeemed()) {

@@ -1,0 +1,31 @@
+// @version('1.3.2')
+// @info('info goes here')
+namespace org.fabric.example.greeting
+
+asset Greeting identified by id {
+  o String id
+  o String text           regex=/^[a-zA-Z\\s]{0,15}$/
+  o Integer friendlyness  range=[1,5]
+  o TextFacts facts
+}
+
+asset TextFacts identified by dummy {
+  o String dummy
+  o String textLength
+  o String wordCount
+}
+
+
+@contract(GreetingContract)
+@returns(String)
+transaction getGreetingText identified by ctx {
+   o String ctx
+   o String textid
+}
+
+@contract(GreetingContract)
+transaction setGreetingText identified by ctx {
+   o String ctx
+   o String textid
+   o String text
+}

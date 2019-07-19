@@ -1,0 +1,9 @@
+export DEBUG=*
+rgen convert --input greeting.cto -o metadata
+rgen create -f metadata/metadata.json -o docs -n singlepagesummary
+rgen create -f metadata/metadata.json -o domain-adts-ts/src -n domain_adts_ts
+rgen create -f metadata/metadata.json -o domain-adts-java/src -n domain_adts_java
+rgen create -f metadata/metadata.json -o contract-ts/src -n contract_ts
+rgen create -f metadata/metadata.json -o contract-java/src -n contract_java
+#rgen create -f metadata/metadata.json -o client-ts/src -n client_ts
+#rgen create -f metadata/metadata.json -o client-java/src -n client_java

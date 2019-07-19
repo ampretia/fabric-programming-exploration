@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package org.hyperledger.fabric.contract;
+
+import "google/protobuf/descriptor.proto";
+
+
+message Typing {
+    string format = 1;
+}
+
+extend google.protobuf.FieldOptions {
+    optional Typing typeInfo = 1414;
+}

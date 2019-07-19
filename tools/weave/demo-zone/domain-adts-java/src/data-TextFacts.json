@@ -1,0 +1,1 @@
+{"title":"TextFacts","$id":"TextFacts","description":"An asset named TextFacts","type":"object","properties":{"dummy":{"type":"string","name":"dummy"},"textLength":{"type":"string","name":"textLength"},"wordCount":{"type":"string","name":"wordCount"}},"required":["dummy","textLength","wordCount"]}

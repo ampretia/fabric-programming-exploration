@@ -1,0 +1,55 @@
+// Protobuf definition of the metadata schema
+// 
+syntax = "proto3";
+
+
+// Main definition of Contract Metadata
+// The JSON mapping of an instance of the 'contractMetadata' is
+// https://fabric-shim.github.io/release-1.4/contract-schema.json
+
+message contractMetadata {
+    string schema = 1;  
+    info info = 2;
+    schemas components =3;
+    map<string,contract> contracts = 4;
+}
+
+// Information about the set of contracts
+message info {
+    string title = 1;
+    string version = 2;
+}
+
+// Datatype handling 
+message datatype {
+    string title = 1;
+    string id = 2;
+    string description = 3 ;
+    map<string,property> properties = 4;
+    repeated string required = 5;
+}
+message property {
+    string name = 1;
+    string type = 2;
+}
+
+// Wrapper object to maintain compatibility
+message schemas {
+    map<string,datatype> schemas = 1;
+}
+
+// Contracts
+message contract {
+    string name = 1;
+    repeated transaction transactions= 2;
+}
+message transaction {
+    string name = 1;
+    repeated parameter parameters = 2;
+    repeated string tag = 3;
+}
+message parameter {
+    map<string,string> schema = 1;
+    string name = 2;
+}
+

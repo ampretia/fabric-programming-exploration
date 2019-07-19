@@ -1,0 +1,198 @@
+{
+    "$schema": "https://fabric-shim.github.io/release-1.4/contract-schema.json",
+    "schema": "https://fabric-shim.github.io/release-1.4/contract-schema.json",
+    "components": {
+        "schemas": {
+            "Goods": {
+                "title": "Goods",
+                "$id": "Goods",
+                "description": "An asset named Goods",
+                "type": "object",
+                "properties": {
+                    "assetId": {
+                        "type": "string",
+                        "name": "assetId"
+                    },
+                    "description": {
+                        "type": "string",
+                        "name": "description"
+                    }
+                },
+                "required": [
+                    "assetId",
+                    "description"
+                ]
+            },
+            "Business": {
+                "title": "Business",
+                "$id": "Business",
+                "description": "An asset named Business",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "name": "name"
+                    },
+                    "address": {
+                        "type": "string",
+                        "name": "address"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "name": "phone"
+                    },
+                    "description": {
+                        "type": "string",
+                        "name": "description"
+                    }
+                },
+                "required": [
+                    "name",
+                    "address",
+                    "phone",
+                    "description"
+                ]
+            },
+            "Shipment": {
+                "title": "Shipment",
+                "$id": "Shipment",
+                "description": "An asset named Shipment",
+                "type": "object",
+                "properties": {
+                    "shipmentId": {
+                        "type": "string",
+                        "name": "shipmentId"
+                    },
+                    "goodsAsset": {
+                        "$id": "Goods",
+                        "type": "object",
+                        "properties": {
+                            "assetId": {
+                                "type": "string",
+                                "name": "assetId"
+                            },
+                            "description": {
+                                "type": "string",
+                                "name": "description"
+                            }
+                        },
+                        "required": [
+                            "assetId",
+                            "description"
+                        ],
+                        "description": "An instance of org.fabric.example.shipping.Goods",
+                        "name": "goodsAsset"
+                    },
+                    "business": {
+                        "$id": "Business",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "name": "name"
+                            },
+                            "address": {
+                                "type": "string",
+                                "name": "address"
+                            },
+                            "phone": {
+                                "type": "string",
+                                "name": "phone"
+                            },
+                            "description": {
+                                "type": "string",
+                                "name": "description"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "address",
+                            "phone",
+                            "description"
+                        ],
+                        "description": "An instance of org.fabric.example.shipping.Business",
+                        "name": "business"
+                    }
+                },
+                "required": [
+                    "shipmentId",
+                    "goodsAsset",
+                    "business"
+                ]
+            }
+        }
+    },
+    "contracts": {
+        "ProducerEndpoint": {
+            "name": "ProducerEndpoint",
+            "transactions": [
+                {
+                    "name": "queryShipment",
+                    "parameters": [
+                        {
+                            "schema": {
+                                "type": "string"
+                            },
+                            "name": "owningContract"
+                        },
+                        {
+                            "schema": {
+                                "$ref": "#/components/schemas/Goods"
+                            },
+                            "name": "goodsAsset"
+                        },
+                        {
+                            "schema": {
+                                "$ref": "#/components/schemas/Business"
+                            },
+                            "name": "consumer"
+                        },
+                        {
+                            "schema": {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "name": "timestamp"
+                        }
+                    ],
+                    "tag": []
+                },
+                {
+                    "name": "requestShipment",
+                    "parameters": [
+                        {
+                            "schema": {
+                                "type": "string"
+                            },
+                            "name": "owningContract"
+                        },
+                        {
+                            "schema": {
+                                "$ref": "#/components/schemas/Goods"
+                            },
+                            "name": "goodsAsset"
+                        },
+                        {
+                            "schema": {
+                                "$ref": "#/components/schemas/Business"
+                            },
+                            "name": "consumer"
+                        },
+                        {
+                            "schema": {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "name": "timestamp"
+                        }
+                    ],
+                    "tag": []
+                }
+            ]
+        }
+    },
+    "info": {
+        "title": "Shipping Example",
+        "version": "0.0.1"
+    }
+}

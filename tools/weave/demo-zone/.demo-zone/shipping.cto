@@ -1,0 +1,42 @@
+
+// @version('1.3.2')
+// @info('info goes here')
+namespace org.fabric.example.shipping
+
+asset Goods identified by assetId {
+  o String assetId
+  o String description
+}
+
+asset Business identified by name {
+  o String name      
+  o String address
+  o String phone
+  o String description    
+}
+
+asset Shipment identified by shipmentId {
+  o String shipmentId
+  o Goods goodsAsset
+  o Business business 
+}
+
+
+@contract(ProducerEndpoint)
+@returns(Shipment)
+transaction queryShipment {
+  o Goods goodsAsset
+  o Business consumer
+}
+
+
+@contract(ProducerEndpoint)
+@returns(String)
+transaction requestShipment  {
+  o String dummy
+  o Goods goodsAsset
+}
+
+
+
+
