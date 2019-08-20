@@ -94,10 +94,13 @@ This can be returned from the contract via a 'evaulateTransaction' on a defined 
 
 ### Direction
 
-- To provide a ledger API similar to the approach taken within the samples of state and statelist
-- To update the ability to provide the transient properties as arguments
-- To provide tooling to permit the object model definition to be converted into other formats and code
+In prority order...
 
+- 1 To provide a ledger API similar to the approach taken within the samples of state and statelist
+- 2 Document the the plug points and manner of custom serialization and validation
+- 3 Events and Transient Data - pull in feedback from field discussions
+- 4 Data Model - definition
+- 5 To provide tooling to permit the object model definition to be converted into other formats and code
 
 
 
