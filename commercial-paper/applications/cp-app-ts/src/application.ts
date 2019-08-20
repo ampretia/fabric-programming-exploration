@@ -12,7 +12,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import * as path from 'path';
 
-import { ServiceFactory , CommercialPaperEndpoint } from './services';
+import { CommercialPaperEndpoint } from './services.impl';
 import { FileSystemWallet } from 'fabric-network';
 
 // The ADTs for the domain this example uses, namely commercial paper

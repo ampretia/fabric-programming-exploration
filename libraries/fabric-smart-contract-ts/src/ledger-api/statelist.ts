@@ -8,6 +8,8 @@ import JSONSerializer from './jsonserializer';
 import ISerializer from './serializer';
 import State from './state';
 
+// TODO: Add in update iterators as per the recent node.js chaincode updates
+
 /**
  * StateList provides a named virtual container for a set of ledger states.
  * Each state has unique key which associates it with the container, rather
@@ -36,6 +38,8 @@ export default class StateList<T extends State> {
         this.domainhash = domainhash; // should come from the value of the model
         this.serializer = new JSONSerializer<T>(type);
     }
+
+    // CRUD style operations on the states    
 
     /**
      * Add a state to the list. Creates a new state in worldstate with
@@ -81,8 +85,11 @@ export default class StateList<T extends State> {
         await this.ctx.stub.deletePrivateData(this.collection, ledgerkey);
     }
 
+    // QUERY operations on the states, can be expensive due to size of results sets
+
     /**
-     *
+     * Gets an array of all the states
+     * Should be used with caution
      */
     public async getAllStates(): Promise<T[]> {
         const iterator = this.ctx.stub.getStateByPartialCompositeKey(this.type, [this.domainhash, this.generation]);
@@ -118,6 +125,14 @@ export default class StateList<T extends State> {
     }
 
     /**
+     *
+     * @param primarykeys
+     */
+    public async getRangeWithPaginsation(primarykeys: string[]): Promise<T[]> {
+        throw new Error('not implemented yet');
+    }
+
+    /**
      * Move to the generation specified
      *
      * @param key
@@ -134,13 +149,7 @@ export default class StateList<T extends State> {
         await this.ctx.stub.deletePrivateData(this.collection, ledgerkey);
     }
 
-    /**
-     *
-     * @param primarykeys
-     */
-    public async getRangeWithPaginsation(primarykeys: string[]): Promise<T[]> {
-        throw new Error('not implemented yet');
-    }
+
 
     private formKey(stateKeys: string[]): string {
         const k = this.ctx.stub.createCompositeKey(this.type, [this.domainhash, this.generation, ...stateKeys]);
