@@ -22,7 +22,7 @@
     "author": "John Doe",
     "license": "Apache-2.0",
     "dependencies": {
-        "class-transformer": "^0.2.0",
+        "class-transformer": "^0.3.1",
         "fabric-contract-api": "^1.4.2-snapshot.28",
         "fabric-data": "file:fabric-data-0.0.1.tgz"
     },
